@@ -2,7 +2,7 @@
 APPLICATION = timers-example
 
 # If no BOARD is found in the environment, use this default:
-BOARD ?= nrf52840dk
+BOARD ?= pba-d-01-kw2x
 
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../RIOT
