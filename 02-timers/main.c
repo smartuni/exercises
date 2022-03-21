@@ -24,16 +24,23 @@ int main(void)
 
     /* we can configure an event to occur in the future by setting a timer */
     ztimer_t timeout;                     /* create a new timer */
-    timeout.callback = message_ callback; /* set the function to execute */
+    timeout.callback = message_callback; /* set the function to execute */
     timeout.arg = "Timeout!";             /* set the argument that the function will receive */
     ztimer_set(ZTIMER_SEC, &timeout, 2);  /* set the timer to trigger in 2 seconds */
 
     /* in parallel, we can perform other tasks on this thread */
-    while (1) {
-        /* this blinks an LED twice a second */
+
+    /* get the current timer count */
+    ztimer_now_t start = ztimer_now(ZTIMER_MSEC);
+
+    /* blink an LED for 10 seconds */
+    while ((ztimer_now(ZTIMER_MSEC) - start) <= 10000) {
+        /* this blinks the LED twice a second */
         LED0_TOGGLE;
         ztimer_sleep(ZTIMER_MSEC, 500);
     }
+
+    puts("Done!");
 
     return 0;
 }
