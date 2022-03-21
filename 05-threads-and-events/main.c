@@ -64,7 +64,7 @@ void button_callback(void *arg)
 {
     (void) arg;    /* Not used */
 
-    /* [TODO] TASK2: Post message to EVENT_PRIO_HIGHEST */
+    /* [TODO] TASK2: Post message to `event_queue` */
 }
 
 /** -------------------------------- main ------------------------------------*/
@@ -79,7 +79,7 @@ int main(void)
         return 1;
     }
 
-    /* Say hello from EVENT_PRIO_HIGHEST */
+    /* Say hello from `event_queue` */
     event_post(&event_queue, &hello_world);
 
     /* [TODO] TASK1: Start blinky thread */
