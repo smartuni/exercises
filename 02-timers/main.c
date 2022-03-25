@@ -18,6 +18,8 @@ void message_callback(void *argument)
     puts(message);
 }
 
+/* [TASK 3: insert your callback function here] */
+
 int main(void)
 {
     puts("This is a timers example");
@@ -28,8 +30,9 @@ int main(void)
     timeout.arg = "Timeout!";             /* set the argument that the function will receive */
     ztimer_set(ZTIMER_SEC, &timeout, 2);  /* set the timer to trigger in 2 seconds */
 
-    /* in parallel, we can perform other tasks on this thread */
+    /* [TASK 3: insert your timer here] */
 
+    /* in parallel, we can perform other tasks on this thread */
     /* get the current timer count */
     ztimer_now_t start = ztimer_now(ZTIMER_MSEC);
 
