@@ -4,7 +4,9 @@ This is a basic example how to use RIOT in your embedded application.
 It prints out the famous text `Hello World!`.
 The code itself may look like your usual *C* beginners hello-world example.
 
-## Getting started
+## Task 1
+Build the application, flash the firmware and connect to the board through the serial port.
+
 **1. Open a terminal and navigate to the application directory.**
 
 **2. Build the application by executing GNU Make.**
@@ -26,6 +28,11 @@ $ make term
 ```sh
 main(): This is RIOT! (Version: 2022.04-devel)
 Hello World!
+```
+
+Optionally, you can run all the commands above as a single line:
+```sh
+$ make all flash term
 ```
 
 ## Intro to RIOT build system
