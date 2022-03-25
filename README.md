@@ -21,3 +21,24 @@ $ codium .
 
 **4. Go through the exercises starting with `01-hello-world`. Each contains a `README.md` with**
    **detailed instructions and tasks to solve.**
+
+## Conventions
+Throughout the tutorials, we will specify commands and outputs.
+The conventions are as follows:
+
+**Leading `$` means that the command is executed on the linux shell:**
+```sh
+$ make
+```
+
+**Leading `>` means that the command is executed on the RIOT shell:**
+```sh
+> help
+```
+
+**No symbol means an output from the RIOT node on the terminal:**
+```sh
+Command              Description
+---------------------------------------
+echo
+```
