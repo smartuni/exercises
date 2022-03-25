@@ -19,7 +19,7 @@ $ cd exercises
 $ codium .
 ```
 
-**4. Go through the exercises starting with `01-hello-world`. Each contains a `README.md` with**
+**4. Go through the exercises starting with [`01-hello-world`](./01-hello-world/README.md). Each contains a `README.md` with**
    **detailed instructions and tasks to solve.**
 
 ## Conventions
@@ -40,5 +40,5 @@ $ make
 ```sh
 Command              Description
 ---------------------------------------
-echo
+echo                 Echo a message
 ```
