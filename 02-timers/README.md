@@ -1,6 +1,6 @@
 # Simple timer example
 
-In this example we see to fundamental ways of using the timers of your hardware.
+In this example we see two fundamental ways of using the timers of your hardware.
 First, we configure a timer to trigger an event that gets executed in the future.
 Second, we use the timer to sleep (block the thread) for a known amount of time.
 
