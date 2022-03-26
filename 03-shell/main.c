@@ -11,6 +11,8 @@
 
 #include "shell.h"
 
+/* [TASK 2: add command handler here] */
+
 int echo_command(int argc, char **argv)
 {
     /* check that the command is called correctly */
@@ -26,6 +28,7 @@ int echo_command(int argc, char **argv)
     return 0;
 }
 
+/* [TASK 2: register your new command here] */
 SHELL_COMMAND(echo,"Echo a message",echo_command);
 
 int main(void)
