@@ -13,45 +13,43 @@
 #include "saul_reg.h"
 #include "board.h"
 
-#define TEMPERATURE_THRESHOLD 29
+#define TEMPERATURE_THRESHOLD 2600 /* factor of 10^-3 */
 
 int main(void)
 {
-    phydat_t result;
-
     puts("SAUL example application");
 
     /* start by finding a temperature sensor in the system */
-    saul_reg_t *device = saul_reg_find_type(SAUL_SENSE_TEMP);
-    if (!device) {
+    saul_reg_t *temp_sensor = saul_reg_find_type(SAUL_SENSE_TEMP);
+    if (!temp_sensor) {
         puts("No temperature sensor present");
         return 1;
     }
     else {
-        printf("Found temperature device: %s\n", device->name);
+        printf("Found temperature device: %s\n", temp_sensor->name);
     }
+
+    /* [TASK 2: find your device here] */
 
     /* record the starting time */
     ztimer_now_t last_wakeup = ztimer_now(ZTIMER_MSEC);
 
     while (1) {
-        /* read a value from the device */
-        int dimensions = saul_reg_read(device, &result);
-
-        /* dump the read value to STDIO */
-        phydat_dump(&result, dimensions);
-
-        /* check if the temperature value is above the threshold */
-        int16_t temperature = result.val[0];
-
-        /* the scale is 10 ^ scale */
-        if (result.scale < 0) {
-            for (int i = result.scale; i != 0; i ++) {
-                temperature /= 10;
-            }
+        /* read a temperature value from the sensor */
+        phydat_t temperature;
+        int dimensions = saul_reg_read(temp_sensor, &temperature);
+        if (dimensions < 1) {
+            puts("Error reading a value from the device");
+            break;
         }
 
-        if (temperature >= TEMPERATURE_THRESHOLD) {
+        /* dump the read value to STDIO */
+        phydat_dump(&temperature, dimensions);
+
+        /* [TASK 2: perform the acceleration read here ] */
+
+        /* check if the temperature value is above the threshold */
+        if (temperature.val[0] >= TEMPERATURE_THRESHOLD) {
             LED0_ON;
             LED1_OFF;
         }
