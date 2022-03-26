@@ -99,6 +99,8 @@ if (dimensions < 1) {
 phydat_dump(&acceleration, acc_dim);
 ```
 
+**3. Build and flash the application. Open a serial port communication.**
+
 ## Task 4
 
 Detect when your board has been flipped 180 ° and turn the LED2 on.
@@ -109,3 +111,5 @@ Detect when your board has been flipped 180 ° and turn the LED2 on.
 
 **2. If the value surpasses than the threshold, turn the LED on (`LED2_ON`).**
 **Don't forget the turn the LED off (`LED2_OFF`) when the value does not surpass the threshold.**
+
+**3. Build and flash the application. Open a serial port communication.**
