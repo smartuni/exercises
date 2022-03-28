@@ -14,21 +14,25 @@ Build the application, flash the firmware and connect to the board through the s
 $ make all
 ```
 
-**3. Flash the built firmware image into the board's memory.**
+**3. Connect your board using the USB cable.**
+
+**4. Flash the built firmware image into the board's memory.**
 ```sh
 $ make flash
 ```
-**4. Initiate a serial communication with the board.**
+**5. Initiate a serial communication with the board.**
 ```sh
 $ make term
 ```
 
-**5. Reset your board by pressing the 'Reset' button. You should see the "Hello World!" message.**
+**6. Reset your board by pressing the 'Reset' button. You should see the "Hello World!" message.**
 
 ```sh
 main(): This is RIOT! (Version: 2022.04-devel)
 Hello World!
 ```
+
+**7. To exit the serial terminal program, press Ctrl + C.**
 
 Optionally, you can run all the commands above as a single line:
 ```sh
