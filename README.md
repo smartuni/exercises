@@ -19,8 +19,11 @@ $ cd exercises
 $ codium .
 ```
 
-**4. Go through the exercises starting with [`01-hello-world`](./01-hello-world/README.md). Each contains a `README.md` with**
+**4. To avoid installing toolchains, you can use Docker instead. Follow the installation instructions [here](https://doc.riot-os.org/getting-started.html#docker)**
+
+**5. Go through the exercises starting with [`01-hello-world`](./01-hello-world/README.md). Each contains a `README.md` with**
    **detailed instructions and tasks to solve.**
+
 
 ## Conventions
 Throughout the tutorials, we will specify commands and outputs.
