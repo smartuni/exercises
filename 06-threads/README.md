@@ -19,7 +19,7 @@ The function gets called from the beginning only once: at the moment of creation
 That is why, commonly, thread handlers contain a loop which would run forever.
 
 In addition to a handler function, threads require memory: a stack. There local
-variables an other information will be stored when performing function calls.
+variables and other information will be stored when performing function calls.
 For this we simply define an array of a given size:
 ```C
 char thread_stack[THREAD_STACKSIZE_DEFAULT];   /* Stack for the thread */
