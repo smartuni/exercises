@@ -91,7 +91,7 @@ saul_reg_t *accel_sensor = saul_reg_find_type(SAUL_SENSE_ACCEL);
 /* read an acceleration value from the sensor */
 phydat_t acceleration;
 int acc_dim = saul_reg_read(accel_sensor, &acceleration);
-if (dimensions < 1) {
+if (acc_dim < 1) {
     puts("Error reading a value from the device");
     break;
 }
