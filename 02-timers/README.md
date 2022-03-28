@@ -66,7 +66,7 @@ void led_callback(void *argument)
 ```C
 /* inside the main function, before the while loop */
 ztimer_t led_timeout;                     /* create a new timer */
-led_timeout.callback = message_callback;  /* set the function to execute */
+led_timeout.callback = led_callback;  /* set the function to execute */
 ```
 
 **3. Set the timer to fire in 1 second:**
