@@ -29,7 +29,7 @@ int main(void)
         printf("Found temperature device: %s\n", temp_sensor->name);
     }
 
-    /* [TASK 2: find your device here] */
+    /* [TASK 3: find your device here] */
 
     /* record the starting time */
     ztimer_now_t last_wakeup = ztimer_now(ZTIMER_MSEC);
@@ -46,7 +46,7 @@ int main(void)
         /* dump the read value to STDIO */
         phydat_dump(&temperature, dimensions);
 
-        /* [TASK 2: perform the acceleration read here ] */
+        /* [TASK 3: perform the acceleration read here ] */
 
         /* check if the temperature value is above the threshold */
         if (temperature.val[0] >= TEMPERATURE_THRESHOLD) {
