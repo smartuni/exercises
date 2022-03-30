@@ -68,7 +68,7 @@ $ make all flash term
 ## Task 2
 
 Add a new CoAP resource to interact with LEDs on the board. Upon a GET request
-it should return the status of the specific LED. When a POST request is received,
+it should return the status of the specific LED. When a PUT request is received,
 the payload should used to set the new status of the LED.
 
 **NOTE: The CoAP server is implemented in `server.c`, that's where you are going**
@@ -92,10 +92,10 @@ for (unsigned i = 0; i < ARRAY_SIZE(leds); i++) {
 ```
 
 **3. Register a new CoAP resource in the `_resources` array.**
-**It should accept GET and POST requests.**
+**It should accept GET and PUT requests.**
 **It should also match all requests to paths starting with `/led/`:**
 ```C
-{ "/led/", COAP_GET | COAP_POST | COAP_MATCH_SUBTREE, _led_handler, NULL },
+{ "/led/", COAP_GET | COAP_PUT | COAP_MATCH_SUBTREE, _led_handler, NULL },
 ```
 
 **4. Implement the resource handler function.**
@@ -131,23 +131,23 @@ if (led_number >= ARRAY_SIZE(leds)) {
 }
 ```
 
-**Now we need to determine the type of request (GET or POST):**
+**Now we need to determine the type of request (GET or PUT):**
 ```C
 ssize_t resp_len = 0;
 int led_status = 0;
 unsigned method = coap_method2flag(coap_get_code_detail(pdu));
 
 switch (method) {
-case COAP_POST: /* on POST, we set the status of the LED based on the payload */
+case COAP_PUT: /* on PUT, we set the status of the LED based on the payload */
 
 case COAP_GET: /* on GET, we return the status of the LED in plain text */
 
 }
 ```
 
-**Let's implement the POST request first:**
+**Let's implement the PUT request first:**
 ```C
-case COAP_POST: /* on POST, we set the status of the LED based on the payload */
+case COAP_PUT: /* on PUT, we set the status of the LED based on the payload */
     /* check if there is a payload with a LED status */
     if (pdu->payload_len) {
         led_status = atoi((char *)pdu->payload);
@@ -205,5 +205,5 @@ Ask someone around for their IP address and try to turn some other board's LEDs.
 
 **1. Turn the LED 0 of some other board on:**
 ```sh
-> coap post 2001:db8::814c:35fc:fd31:5fde 5683 /led/0 1
+> coap put 2001:db8::814c:35fc:fd31:5fde 5683 /led/0 1
 ```
