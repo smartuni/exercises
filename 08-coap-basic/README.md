@@ -107,7 +107,8 @@ for (unsigned i = 0; i < ARRAY_SIZE(leds); i++) {
 
 **4. Implement the resource handler function.**
 
-**Start by defining the function with the correct signature:**
+**Start by defining the function with the correct**
+**[signature](https://doc.riot-os.org/group__net__gcoap.html#ga8f62887693fa63a7595565e44156806d):**
 ```C
 static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
 {
@@ -204,16 +205,47 @@ static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx
 **6. Build and flash your application. Open the serial communication.**
 
 You should be able to interact with your own LEDs by sending messages to your
-own IP address...but that's not fun...
+own IP address (`coap put`)...but that's not fun...
 
 ## Task 3
 
-Ask someone around for their IP address and try to turn some other board's LEDs.
+Ask someone around for their IP address and try to turn some other board's LEDs
+on.
 
 **1. Turn the LED 0 of some other board on:**
 ```sh
 > coap put 2001:db8::814c:35fc:fd31:5fde 5683 /led/0 1
 ```
+---
+
+## CoRE Link Format (RFC 6690)
+
+[RFC 6690](https://datatracker.ietf.org/doc/html/rfc6690) defines a format to
+express web linking for constrained nodes. It is usually utilized for resource
+discovery (e.g. via the `/.well-known/core` resource or a resource directory).
+
+Let's see an example of a link format response (the line breaks are included 
+for clarity):
+
+```
+</sensors>;ct=40;title="Sensor Index",
+</sensors/temp>;rt="temperature-c";if="sensor",
+<coap://[fd00:dead:beef::1]/sensors/light>;rt="light-lux";if="sensor";obs
+```
+
+This list of links contains 3 elements. Link in a list are separated by `,`. A
+link is composed by a URI (enclosed in `< >`) and zero or more attributes. Each
+attribute is separated by `;`. An attribute may or may not have a value. The key
+and the value are separated by `=`. Attributes are key/values, expressing extra
+information about the link. Some examples of attributes are: content type
+(`ct`), resource type (`rt`), or the interface (`if`).
+
+---
+
+**The next two tasks involve multiple nodes and a resource directory. The**
+**complete diagram looks like the following:**
+
+![](diagram.jpg)
 
 ## Task 4
 
@@ -229,12 +261,14 @@ temperature and humidity readings of the room.
 
 ## Task 5
 
-Discover the hidden sensor. Query a resource directory to find a node that is
-exposing pressure and magnetic readings in the room.
+Discover the hidden sensor. Perform a lookup on a resource directory to find a
+node that is exposing pressure and magnetic readings in the room.
 
 **1. Using the provided resource directory IP address, perform a GET request to**
-**the `/.well-known/core` resource. You need to find a resource where to perform a lookup.**
-**According to the specification, the resource type should be `core.rd-lookup-res`**
+**its `/.well-known/core` resource. The response will be in Link Format.**
+**You need to find in the list of links, a resource where to perform a lookup.**
+**According to the specification, the resource type of the lookup resource**
+**should be `rt=core.rd-lookup-res`**
 
 **2. Once you have found the lookup resource, perform a GET request to it.**
 **It should reply with the hidden sensor information.**
@@ -274,9 +308,14 @@ $ git commit -m "Add sensor CoAP resources"
 $ git remote add upstream https://github.com/<your_username>/exercises.git
 ```
 
+**7. You will need to generate a token to login while you push your changes.**
+**Generate a new token following**
+**[this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). COPY IT SOMEWHERE!**
+
 **7. Push the new branch to your repository:**
 ```sh
 $ git push upstream pr/add_my_sensors
 ```
+**When prompted for a password, use your token.**
 
 **8. Create a new ull request using GitHub website**
