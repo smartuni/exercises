@@ -256,22 +256,27 @@ $ git config --global user.name "FIRST_NAME LAST_NAME"
 $ git config --global user.email "MY_NAME@example.com"
 ```
 
-**3. Add a new commit with the change. Adapt the commit message with your name:**
+**3. Stage your changes to be committed:**
+```sh
+$ git add .
+```
+
+**4. Add a new commit with the change. Adapt the commit message with your name:**
 ```sh
 $ git commit -m "Add sensor CoAP resources"
 ```
 
-**4. Make a fork of [the project](https://github.com/smartuni/exercises)**
+**5. Make a fork of [the project](https://github.com/smartuni/exercises)**
 **on your own account, using GitHub's website.**
 
-**5. Add the new remote to your repository. Replace with the correct username**
+**6. Add the new remote to your repository. Replace with the correct username**
 ```sh
 $ git remote add upstream https://github.com/<your_username>/exercises.git
 ```
 
-**6. Push the new branch to your repository:**
+**7. Push the new branch to your repository:**
 ```sh
-$ git push upstream pr/add_my_contact
+$ git push upstream pr/add_my_sensors
 ```
 
-**7. Create a new ull request using GitHub website**
+**8. Create a new ull request using GitHub website**
