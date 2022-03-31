@@ -46,10 +46,17 @@ $ make all flash term
 2022-03-30 13:51:14,877 #   
 ```
 
+**You should see one wireless interface.**
+**Among other things, it has a MAC address (Long HWaddr), a maximum transmission unit (MTU) and one or more IPv6 addresses.**
 **They are denoted `inet6 addr`. You may not see the one with `scope:global`.**
 **In this case, one of the node's IPv6 addresses is `2001:db8::5d0f:7b9d:ae49:3ee6`.**
 
 **3. Make a coap GET request to your own node. Use your IP address from the previous step.**
+**You can check how to use the `coap` shell command by typing:**
+```sh
+> coap help
+```
+
 **The default UDP port for CoAP servers is `5683`:**
 ```sh
 > coap get 2001:db8::5d0f:7b9d:ae49:3ee6 5683 /.well-known/core
@@ -67,9 +74,9 @@ $ make all flash term
 
 ## Task 2
 
-Add a new CoAP resource to interact with LEDs on the board. Upon a GET request
-it should return the status of the specific LED. When a PUT request is received,
-the payload should used to set the new status of the LED.
+Add a new CoAP resource to the server to interact with LEDs on the board. Upon a
+GET request it should return the status of the specific LED. When a PUT request
+is received, the payload should used to set the new status of the LED.
 
 **NOTE: The CoAP server is implemented in `server.c`, that's where you are going**
 **to work.**
@@ -240,7 +247,7 @@ Make a pull request on GitHub with your changes.
 
 **1. Make sure you saved all changes. Switch to a new git branch:**
 ```sh
-$ git checkout -b pr/add_my_contact
+$ git checkout -b pr/add_my_sensors
 ```
 
 **2. Configure your name and email, replace with your information:**
