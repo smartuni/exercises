@@ -48,6 +48,7 @@ static void _resp_handler(const gcoap_request_memo_t *memo, coap_pkt_t* pdu,
     }
     else if (memo->state != GCOAP_MEMO_RESP) {
         printf("gcoap: error in response\n");
+        printf("state: %d\n", memo->state);
         return;
     }
 

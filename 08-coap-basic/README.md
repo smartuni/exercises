@@ -207,3 +207,65 @@ Ask someone around for their IP address and try to turn some other board's LEDs.
 ```sh
 > coap put 2001:db8::814c:35fc:fd31:5fde 5683 /led/0 1
 ```
+
+## Task 4
+
+Use the information from the `/.well-known/core` to find resources exposing
+temperature and humidity readings of the room.
+
+**1. Using the provided IP address, perform a GET request to the nodes**
+**`/.well-known/core` resource to find which resources it exposes.**
+**Use the `coap` shell command as in task 1.**
+
+**2. Once you have found the resources, try getting the current temperature**
+**and humidity values.**
+
+## Task 5
+
+Discover the hidden sensor. Query a resource directory to find a node that is
+exposing pressure and magnetic readings in the room.
+
+**1. Using the provided resource directory IP address, perform a GET request to**
+**the `/.well-known/core` resource. You need to find a resource where to perform a lookup.**
+**According to the specification, the resource type should be `core.rd-lookup-res`**
+
+**2. Once you have found the lookup resource, perform a GET request to it.**
+**It should reply with the hidden sensor information.**
+
+**3. Finally, get the current pressure and magnetic values from the hidden sensor.**
+
+## Task 6
+
+Make a pull request on GitHub with your changes.
+
+**1. Make sure you saved all changes. Switch to a new git branch:**
+```sh
+$ git checkout -b pr/add_my_contact
+```
+
+**2. Configure your name and email, replace with your information:**
+```sh
+$ git config --global user.name "FIRST_NAME LAST_NAME"
+$ git config --global user.email "MY_NAME@example.com"
+```
+
+**3. Add a new commit with the change. Adapt the commit message with your name:**
+```sh
+$ git commit -m "Add sensor CoAP resources"
+```
+
+**4. Make a fork of [the project](https://github.com/smartuni/exercises)**
+**on your own account, using GitHub's website.**
+
+**5. Add the new remote to your repository. Replace with the correct username**
+```sh
+$ git remote add upstream https://github.com/<your_username>/exercises.git
+```
+
+**6. Push the new branch to your repository:**
+```sh
+$ git push upstream pr/add_my_contact
+```
+
+**7. Create a new ull request using GitHub website**
+```
