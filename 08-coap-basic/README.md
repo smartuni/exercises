@@ -268,4 +268,3 @@ $ git push upstream pr/add_my_contact
 ```
 
 **7. Create a new ull request using GitHub website**
-```
