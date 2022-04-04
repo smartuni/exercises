@@ -49,7 +49,7 @@ $ make all flash term
 **You should see one wireless interface.**
 **Among other things, it has a MAC address (Long HWaddr), a maximum transmission unit (MTU) and one or more IPv6 addresses.**
 **They are denoted `inet6 addr`. You may not see the one with `scope:global`.**
-**In this case, one of the node's IPv6 addresses is `2001:db8::5d0f:7b9d:ae49:3ee6`.**
+**In this case, one of the node's IPv6 addresseterms is `2001:db8::5d0f:7b9d:ae49:3ee6`.**
 
 **3. Make a coap GET request to your own node. Use your IP address from the previous step.**
 **You can check how to use the `coap` shell command by typing:**
@@ -60,6 +60,7 @@ $ make all flash term
 **The default UDP port for CoAP servers is `5683`:**
 ```sh
 > coap get 2001:db8::5d0f:7b9d:ae49:3ee6 5683 /.well-known/core
+coap get 2001:db8::d08e:7060:6eff:7da6 5683 /.well-known/core
 ```
 
 **You should get a response with `code 2.05` and the paths of the resources.**
@@ -71,6 +72,8 @@ $ make all flash term
 
 **4. Try to get the board name from the `/riot/board` resource, sending a GET request.**
 **The command should look almost as the one in step 3, but with a different path at the end.**
+coap get 2001:db8::d08e:7060:6eff:7da6 5683 /.riot/board
+
 
 ## Task 2
 
@@ -215,6 +218,8 @@ on.
 **1. Turn the LED 0 of some other board on:**
 ```sh
 > coap put 2001:db8::814c:35fc:fd31:5fde 5683 /led/0 1
+
+coap put 2001:db8::d08e:7060:6eff:7da6 5683 /led/0 1
 ```
 ---
 
@@ -256,6 +261,8 @@ temperature and humidity readings of the room.
 **`/.well-known/core` resource to find which resources it exposes.**
 **Use the `coap` shell command as in task 1.**
 
+coap get 2001:db8::4860:3c76:8f4b:16e6 5683 /.well-known/core
+
 **2. Once you have found the resources, try getting the current temperature**
 **and humidity values.**
 
@@ -269,6 +276,8 @@ node that is exposing pressure and magnetic readings in the room.
 **You need to find in the list of links, a resource where to perform a lookup.**
 **According to the specification, the resource type of the lookup resource**
 **should be `rt=core.rd-lookup-res`**
+
+coap get fd00:dead:beef::1 5683 /.well-known/core
 
 **2. Once you have found the lookup resource, perform a GET request to it.**
 **It should reply with the hidden sensor information.**
