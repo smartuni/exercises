@@ -8,13 +8,14 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
+#include "board.h"
 #include "shell.h"
 
 /* [TASK 2: add command handler here] */
 
-int echo_command(int argc, char **argv)
-{
+int echo_command(int argc, char **argv) {
     /* check that the command is called correctly */
     if (argc != 2) {
         puts("usage: echo <message>");
@@ -28,11 +29,29 @@ int echo_command(int argc, char **argv)
     return 0;
 }
 
-/* [TASK 2: register your new command here] */
-SHELL_COMMAND(echo,"Echo a message",echo_command);
+int toggle_command(int argc, char **argv) {
+    /* check that the command is called correctly (no extra arguments) */
+    if (argc != 2) {
+        printf("usage: %s <led_number>\n", argv[0]);
+        return 1;
+    }
+    int number = atoi(argv[1]);
+    /* toggle the LED */
+    if (number == 0)
+        LED0_TOGGLE;
+    else if (number == 1)
+        LED1_TOGGLE;
+    else
+        return 2;
 
-int main(void)
-{
+    return 0;
+}
+
+/* [TASK 2: register your new command here] */
+SHELL_COMMAND(echo, "Echo a message", echo_command);
+SHELL_COMMAND(toggle, "Toggle LED 0 or 1", toggle_command);
+
+int main(void) {
     /* buffer to read commands */
     char line_buf[SHELL_DEFAULT_BUFSIZE];
 
