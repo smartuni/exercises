@@ -9,9 +9,9 @@ RIOTBASE ?= $(CURDIR)/../RIOT
 
 # required modules
 USEMODULE += ztimer
-USEMODULE += ztimer_msec
-USEMODULE += ztimer_sec
-
+USEMODULE += ztimer_usec # microsecond precision
+USEMODULE += ztimer_msec # millisecond precision
+USEMODULE += ztimer_sec # second precision
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
 # development process:
