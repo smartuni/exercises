@@ -19,6 +19,11 @@ void message_callback(void *argument)
 }
 
 /* [TASK 3: insert your callback function here] */
+void led_callback(void *argument)
+{
+    (void) argument;
+    LED1_ON;
+}
 
 int main(void)
 {
@@ -31,16 +36,19 @@ int main(void)
     ztimer_set(ZTIMER_SEC, &timeout, 2);  /* set the timer to trigger in 2 seconds */
 
     /* [TASK 3: insert your timer here] */
+    ztimer_t led_timeout;
+    led_timeout.callback = led_callback;
+    ztimer_set(ZTIMER_SEC, &led_timeout, 1);
 
     /* in parallel, we can perform other tasks on this thread */
     /* get the current timer count */
     ztimer_now_t start = ztimer_now(ZTIMER_MSEC);
 
     /* blink an LED for 10 seconds */
-    while ((ztimer_now(ZTIMER_MSEC) - start) <= 10000) {
+    while ((ztimer_now(ZTIMER_MSEC) - start) <= 5000) {
         /* this blinks the LED twice a second */
         LED0_TOGGLE;
-        ztimer_sleep(ZTIMER_MSEC, 500);
+        ztimer_sleep(ZTIMER_MSEC, 250);
     }
 
     puts("Done!");

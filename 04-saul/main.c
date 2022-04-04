@@ -13,7 +13,10 @@
 #include "saul_reg.h"
 #include "board.h"
 
-#define TEMPERATURE_THRESHOLD 2600 /* factor of 10^-3 */
+#define TEMPERATURE_THRESHOLD 2700 /* factor of 10^-3 */
+#define ACCEL_TOP_THRESHOLD -1100
+#define ACCEL_BOTTOM_THRESHOLD -900
+
 
 int main(void)
 {
@@ -29,7 +32,8 @@ int main(void)
         printf("Found temperature device: %s\n", temp_sensor->name);
     }
 
-    /* [TASK 3: find your device here] */
+    /* [TASK 2: find your device here] */
+    saul_reg_t *accel_sensor = saul_reg_find_type(SAUL_SENSE_ACCEL);
 
     /* record the starting time */
     ztimer_now_t last_wakeup = ztimer_now(ZTIMER_MSEC);
@@ -44,19 +48,36 @@ int main(void)
         }
 
         /* dump the read value to STDIO */
-        phydat_dump(&temperature, dimensions);
+        /*phydat_dump(&temperature, dimensions);*/
 
-        /* [TASK 3: perform the acceleration read here ] */
+        /* [TASK 2: perform the acceleration read here ] */
+        phydat_t acceleration;
+        int acc_dim = saul_reg_read(accel_sensor, &acceleration);
+        if (acc_dim < 1) {
+            puts("Error reading a value from the device");
+            break;
+        }
+
+        phydat_dump(&acceleration, acc_dim);
+
+        /* check if board is flipped 180 degrees*/
+        if ((ACCEL_TOP_THRESHOLD <= acceleration.val[2]) && (acceleration.val[2] <= ACCEL_BOTTOM_THRESHOLD))
+        {
+            LED2_ON;
+        }
+        else {
+            LED2_OFF;
+        }
 
         /* check if the temperature value is above the threshold */
-        if (temperature.val[0] >= TEMPERATURE_THRESHOLD) {
+        /* if (temperature.val[0] >= TEMPERATURE_THRESHOLD) {
             LED0_ON;
             LED1_OFF;
         }
         else {
             LED0_OFF;
             LED1_ON;
-        }
+        } */
 
         /* wait for 500 ms */
         ztimer_periodic_wakeup(ZTIMER_MSEC, &last_wakeup, 500);
