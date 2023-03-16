@@ -1,5 +1,5 @@
 # RIOT in the Internet of Things - Exercises
-## Summer semester 2022
+## Winter semester 2023
 
 Collection of practical exercises, assignments, and tasks to become familiar
 with IoT technologies using Linux and RIOT-OS.
