@@ -30,7 +30,7 @@ write particular registers that control the GPIO peripheral.
 #include "periph/gpio.h"
 ```
 
-**2. Initialize the LED0 GPIO pin as an output.**
+**2. Inside the `main` function, initialize the LED0 GPIO pin as an output.**
 **In the `pba-d-01-kw2x` we are currently using, the LED0 is connected to the**
 **Port D, Pin 6:**
 ```C
