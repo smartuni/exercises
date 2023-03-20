@@ -10,6 +10,8 @@
 
 #include "board.h"
 #include "ztimer.h"
+/* at the top of main.c */
+#include "periph/gpio.h"
 
  /* [TASK 2: define button and led1 here] */
 
@@ -17,6 +19,8 @@
 int main(void)
 {
     puts("GPIOs example.");
+
+    /* [TASK 1: initialize the GPIO here] */
 
     return 0;
 }
