@@ -30,19 +30,18 @@ write particular registers that control the GPIO peripheral.
 #include "periph/gpio.h"
 ```
 
-**2. Inside the `main` function, initialize the LED0 GPIO pin as an output.**
+**2. Outside the `main` function define the LED0 GPIO pin as an output.**
 **In the `pba-d-01-kw2x` we are currently using, the LED0 is connected to the**
 **Port D, Pin 6:**
 ```C
 gpio_t led0 = GPIO_PIN(PORT_D, 6);
 gpio_mode_t led0_mode = GPIO_OUT;
-
-gpio_init(led0, led0_mode);
 ```
 
 **3. The LEDs on the board are on when the GPIO outputs `0`.**
-**Start by turning the LED off (setting the GPIO to `1`):**
+**Inside the `main` function, start by initializing the GPIO and turning the LED off (setting the GPIO to `1`):**
 ```C
+gpio_init(led0, led0_mode);
 gpio_set(led0);
 ```
 
@@ -98,7 +97,7 @@ void button_callback (void *arg)
 /* define button outside the main function, as we will use it later */
 gpio_t button = GPIO_PIN(PORT_D, 1);
 
-/* ... */
+/* initialize button inside the main function */
 gpio_init_int(button, GPIO_IN_PU, GPIO_BOTH, button_callback, NULL);
 ```
 
