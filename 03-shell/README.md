@@ -148,6 +148,7 @@ int number = atoi(argv[1]);
 ```
 
 **3. Based on the value of `number`, call `LED0_TOGGLE` or `LED1_TOGGLE`.**
+**You can also update the command help message to indicate the new functionality.**
 
 **4. Build flash and open the serial communication with the board:**
 ```sh
