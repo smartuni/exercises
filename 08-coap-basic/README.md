@@ -110,7 +110,7 @@ for (unsigned i = 0; i < ARRAY_SIZE(leds); i++) {
 **Start by defining the function with the correct**
 **[signature](https://doc.riot-os.org/group__net__gcoap.html#ga8f62887693fa63a7595565e44156806d):**
 ```C
-static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
+static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx)
 {
     (void) ctx; /* argument not used */
 
@@ -199,7 +199,7 @@ case COAP_GET: /* on GET, we return the status of the LED in plain text */
 
 **5. Declare your handler function's prototype before `_resources` is declared:**
 ```C
-static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx);
+static ssize_t _led_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx);
 ```
 
 **6. Build and flash your application. Open the serial communication.**

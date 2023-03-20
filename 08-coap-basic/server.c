@@ -21,7 +21,7 @@
 #include "periph/gpio.h"
 #include "board.h"
 
-static ssize_t _riot_board_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, void *ctx);
+static ssize_t _riot_board_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx);
 
 /* [TASK 2: add the prototype of your resource handler here] */
 
@@ -62,7 +62,7 @@ void server_init(void)
  *
  * GET: Returns the name of the board in plain text
  */
-static ssize_t _riot_board_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
+static ssize_t _riot_board_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx)
 {
     (void)ctx;
 
