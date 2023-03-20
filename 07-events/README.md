@@ -58,10 +58,29 @@ int main(void)
 }
 ```
 
+As mentioned earlier, RIOT provides module three predefined queues via the
+`event_thread` module. These queues are defined in the `event/thread.h` header.
+
+```c
+/**
+ * @brief   Pointer to the event queue handling highest priority events
+ */
+#define EVENT_PRIO_HIGHEST  (&event_thread_queues[EVENT_QUEUE_PRIO_HIGHEST])
+/**
+ * @brief   Pointer to the event queue handling medium priority events
+ */
+#define EVENT_PRIO_MEDIUM   (&event_thread_queues[EVENT_QUEUE_PRIO_MEDIUM])
+/**
+ * @brief   Pointer to the event queue handling lowest priority events
+ */
+#define EVENT_PRIO_LOWEST   (&event_thread_queues[EVENT_QUEUE_PRIO_LOWEST])
+```
+
 ## Post an event
 
 To post events use `event_post()` function. We can post events from interrupts
-or from other threads:
+or from other threads. Events are executed in a first in first out (FIFO)
+scheme.
 
 ```C
 event_post(
@@ -70,7 +89,12 @@ event_post(
         );
 ```
 
-Events are executed in a first in first out (FIFO) scheme.
+For example, the following snippet posts `my_event` to the queue with highest
+priority.
+
+```c
+event_post(EVENT_PRIO_HIGHEST, &my_event);
+```
 
 ## Task 1
 
@@ -105,8 +129,7 @@ interrupts, so we don't block other threads. Let's use events.
 
 ## Task 2
 
-Create thread that will serve the event queue. Post an
-event whenever the button is pressed.
+Post an event to the highest priority queue whenever the button is pressed.
 
 **1. Create the event handler function, which executes the task:**
 ```C
@@ -126,33 +149,16 @@ event_queue_t queue;
 event_t event = { .handler = event_handler };
 ```
 
-**3. Create the stack and the handler for the thread that will serve the queue:**
-```C
-char thread_stack[THREAD_STACKSIZE_DEFAULT];
-void *thread_handler(void *arg)
-{
-    (void) arg;     /* Not used */
+**3. Add the `event_thread` module to the application Makefile:
 
-    /* initialize the event queue */
-    event_queue_init(&queue);
-
-    /* wait for events to be posted and serve them */
-    event_loop(&queue);
-    return 0;
-}
+```Makefile
+USEMODULE += event_thread
 ```
 
-**4. Create the thread from the `main` thread:**
-```C
-thread_create(
-    thread_stack,
-    sizeof(thread_stack),
-    THREAD_PRIORITY_MAIN - 1,
-    THREAD_CREATE_STACKTEST,
-    thread_handler,
-    NULL,
-    "queue thread"
-);
+**4. Include the `event/thread.h` header to `main.c`
+
+```c
+#include "event/thread.h"
 ```
 
 **5. Modify the `button_callback` to post the event instead:**
@@ -161,7 +167,7 @@ void button_callback(void *arg)
 {
     (void) arg;    /* Not used */
 
-    event_post(&queue, &event);
+    event_post(&queue, EVENT_PRIO_HIGHEST);
 }
 ```
 

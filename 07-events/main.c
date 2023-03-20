@@ -12,13 +12,14 @@
 #include "board.h"
 #include "thread.h"
 #include "event.h"
+
+/* [TASK 2: include Event Thread header here] */
+
 #include "ztimer.h"
 
 /* [TASK 2: create event handler here] */
 
 /* [TASK 2: instantiate queue and event here] */
-
-/* [TASK 2: create thread stack and handler here] */
 
 void button_callback(void *arg)
 {
@@ -36,8 +37,6 @@ int main(void)
         puts("[FAILED] init BTN0!");
         return 1;
     }
-
-    /* [TASK 2: create new thread here ] */
 
     while (1) {
         puts("Main");
