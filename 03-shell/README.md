@@ -111,6 +111,16 @@ int toggle_command(int argc, char **argv)
 SHELL_COMMAND(toggle, "Toggle LED 0", toggle_command);
 ```
 
+**4. Build flash and open the serial communication with the board:**
+```sh
+$ make all flash term
+```
+
+**5. Test your new command:**
+```sh
+> toggle
+```
+
 ## Task 3
 
 Modify the `toggle` command so it accepts as first argument `0` or `1`, and toggle
@@ -138,6 +148,7 @@ int number = atoi(argv[1]);
 ```
 
 **3. Based on the value of `number`, call `LED0_TOGGLE` or `LED1_TOGGLE`.**
+**You can also update the command help message to indicate the new functionality.**
 
 **4. Build flash and open the serial communication with the board:**
 ```sh

@@ -11,12 +11,18 @@
 #include "board.h"
 #include "ztimer.h"
 
- /* [TASK 2: define button and led1 here] */
+/* [TASK 1: define led0 here] */
+
+/* [TASK 2: define button and led1 here] */
+
+/* [TASK 2: write the callback function here] */
 
 
 int main(void)
 {
     puts("GPIOs example.");
+
+    /* [TASK 1: initialize and use led0 here] */
 
     return 0;
 }
