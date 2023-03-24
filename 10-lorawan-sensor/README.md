@@ -94,7 +94,7 @@ USEMODULE += sx1276
 $ make all flash term
 ```
 
-8. [OPTIONAL] Configure a Payload Formatter in the TTN Dashboard. Use Custom Javascript
+8. [**OPTIONAL**] Configure a Payload Formatter in the TTN Dashboard. Use Custom Javascript
 as Formatter type and paste the following snippet:
 
 ```
