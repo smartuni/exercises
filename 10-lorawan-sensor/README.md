@@ -8,17 +8,17 @@ To ensure flexibility, the GNRC Network Stack follows some design principles:
 using the [NetAPI](https://doc.riot-os.org/group__net__gnrc__netapi.html).
 2. Packets are dispatched using the [Netreg](https://doc.riot-os.org/group__net__gnrc__netreg.html) API. Protocols and applications can subscribe to packets of interest.
 3. Protocols or network interfaces can be configured via the NetAPI using
+[netopts](https://doc.riot-os.org/group__net__netopt.html).
 4. Packets are stored in a centralized [Packet Buffer](https://doc.riot-os.org/group__net__gnrc__pktbuf.html) and are represented using linked lists (packet snips). This
 simplify the process of adding headers to existing packets. The Packet Buffer
 API provides functions to gather/scatter packet snips.
 
-[netopts](https://doc.riot-os.org/group__net__netopt.html).
 
 GNRC Network Interfaces are essentially threads for protocols below the network layer.
 A RIOT application can have more than one network interface, for eg: IEEE 802.15.4,
 Ethernet, BLE or LoRaWAN.
 
-The application increments a counter each time the button is pressed and periodically
+The proposed application increments a counter each time the button is pressed and periodically
 sends the counter value to LoRaWAN Application Server.
 
 ## Task 1
