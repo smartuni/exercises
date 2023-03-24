@@ -22,7 +22,7 @@
 
 #include "gcoap_example.h"
 
-static ssize_t _sensor_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, void *ctx);
+static ssize_t _sensor_handler(coap_pkt_t* pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx);
 
 /* CoAP resources. Must be sorted by path (ASCII order). */
 #if defined(TASK_4)
@@ -79,7 +79,7 @@ void server_init(void)
 /*
  * GET: Returns the current sensor value as plain text
  */
-static ssize_t _sensor_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, void *ctx)
+static ssize_t _sensor_handler(coap_pkt_t *pdu, uint8_t *buf, size_t len, coap_request_ctx_t *ctx)
 {
     saul_reg_t *device = *(saul_reg_t**)ctx;
 
