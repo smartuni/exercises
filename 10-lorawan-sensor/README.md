@@ -117,10 +117,10 @@ function decodeUplink(input) {
 
 3. Use the following parameters for the MQTT subscription:
 
-- User: <Application ID>@ttn
-- Password: <API Key>
-- Host: eu1.cloud.thethings.network
-- Topic = v3/<Application ID>@ttn/devices/+/up
+- User: `<Application ID>@ttn`
+- Password: `<API Key>`
+- Host: `eu1.cloud.thethings.network`
+- Topic = `v3/<Application ID>@ttn/devices/+/up`
 
 NOTE: '+' is a wildcard. In this case it is used to match any device.
 In order to subscribe to all available topics, set the topic to "#".
