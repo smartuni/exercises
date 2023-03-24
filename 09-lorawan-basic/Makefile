@@ -64,7 +64,7 @@ CFLAGS += -DCONFIG_LORAMAC_DEV_EUI_DEFAULT=\"CCCCCCCCCCCCCCCC\"
 # Use OTAA by default
 CFLAGS += -DCONFIG_LORAMAC_DEFAULT_JOIN_PROCEDURE_OTAA
 
-# If uncommented, the default value (DR0) is used. Note this value is also used for the OTAA.
+# If commented, the default value (DR0) is used. Note this value is also used for the OTAA.
 CFLAGS += -DCONFIG_LORAMAC_DEFAULT_DR_5
 
 # # Set default messages to unconfirmable
