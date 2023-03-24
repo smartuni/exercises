@@ -7,6 +7,19 @@ This application is a basic showcase for testing GNRC LoRaWAN stack.
 1. Check the Makefile of the application to see how a typical GNRC LoRaWAN is
 bootstrapped.
 
+2. Configure board and driver in the application Makefile:
+
+E.g
+```
+BOARD ?= nucleo-l152re
+USEMODULE += sx1276
+```
+
+3. Build and flash the application. Open a serial communication:
+```
+$ make all flash term
+```
+
 ## Task 2
 
 1. Join the LoRaWAN Network by using OTAA.
