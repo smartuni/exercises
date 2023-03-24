@@ -21,12 +21,17 @@ Ethernet, BLE or LoRaWAN.
 The proposed application increments a counter each time the button is pressed and periodically
 sends the counter value to LoRaWAN Application Server.
 
+## Note regarding GNRC NetAPI
+
+Some GNRC NetAPI functions allow to pass a `context` argument. Since the netopts
+of this exercise do not use any context, set `context=0` if required by the function.
+
 ## Task 1
 1. Iterate all GNRC interfaces. For that, use the the
    [`gnrc_netif_iter`](https://doc.riot-os.org/group__net__gnrc__netif.html#gaa58a468fb9e82d7107e229f0239c4e53)
    function.
 2. Use the [`gnrc_netapi_get`](https://doc.riot-os.org/group__net__gnrc__netapi.html#ga891f61c6d9e2b1dee3930f9f852ba86a)
-   to get the device type. Use the PID of the candidate interface (`netif->pid`) and set the context of `gnrc_netapi_get` to 0. Use the netopt
+   to get the device type. Use the PID of the candidate interface (`netif->pid`). Use the netopt
    [`NETOPT_DEVICE_TYPE`](https://doc.riot-os.org/group__net__netopt.html#gga19e30424c1ab107c9c84dc0cb29d9906a22423b24454d2cc25a395fd398505bf4) to check for `NETDEV_TYPE_LORA`.
 
 ## Task 2
