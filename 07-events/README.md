@@ -143,9 +143,8 @@ void event_handler(event_t *event)
 }
 ```
 
-**2. Instantiate the event queue and the event pointing to the handler:**
+**2. Instantiate the event pointing to the handler:**
 ```C
-event_queue_t queue;
 event_t event = { .handler = event_handler };
 ```
 
@@ -167,7 +166,7 @@ void button_callback(void *arg)
 {
     (void) arg;    /* Not used */
 
-    event_post(&queue, EVENT_PRIO_HIGHEST);
+    event_post(EVENT_PRIO_HIGHEST, &event);
 }
 ```
 
