@@ -75,7 +75,7 @@ txtsnd 3 7B "Hello RIOT!"
 Each DR defines a set of configurations of LoRa PHY parameters (Spreading
 Factor and Bandwidth). The lower the DR is the longer the transmission range
 is, at the cost of higher Time on Air. In the EU868 the LoRaWAN specification
-defines eight datarates (`DR{0..7}`). GNRC LoRaWAN exposes only `DR{0..5}`
+defines eight datarates (`DR={0..7}`). GNRC LoRaWAN exposes only `DR={0..5}`
 
 To minimize Time on Air, an application should use the highest DR as possible.
 
