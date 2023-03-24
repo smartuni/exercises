@@ -4,12 +4,12 @@ This application is a basic showcase for testing GNRC LoRaWAN stack.
 
 ## Task 1
 
-**1. Check the Makefile of the application to see how a typical GNRC LoRaWAN is
+1. Check the Makefile of the application to see how a typical GNRC LoRaWAN is
 bootstrapped.
 
 ## Task 2
 
-**1. Join the LoRaWAN Network by using OTAA.
+1. Join the LoRaWAN Network by using OTAA.
 
 Check the interface pid with `ifconfig` and set the Application Key, Device EUI
 and Application EUI using ifconfig. This information is available in the Device
@@ -25,7 +25,7 @@ ifconfig 3 set appkey CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 ifconfig 3 up
 ```
 
-2**. Wait around 5 seconds and check that `ifconfig` shows `Link: up`
+2. Wait around 5 seconds and check that `ifconfig` shows `Link: up`
 
 ```
 Iface  3  HWaddr: 26:01:27:2F  Frequency: 868500000Hz  BW: 125kHz  SF: 7
@@ -37,7 +37,7 @@ Iface  3  HWaddr: 26:01:27:2F  Frequency: 868500000Hz  BW: 125kHz  SF: 7
 
 ## Task 3
 
-**1. Use the `txtsnd` command to send data to TTN. The command can be used to send
+1. Use the `txtsnd` command to send data to TTN. The command can be used to send
 raw data on any GNRC Network interface:
 
 ```
@@ -53,11 +53,11 @@ E.g to send "Hello RIOT!" to LoRaWAN port 123 (hex 0x7B) via interface 3:
 txtsnd 3 7B "Hello RIOT!"
 ```
 
-**2. Check in the `Live Data` tab of the Device Overview that the message arrived.
+2. Check in the `Live Data` tab of the Device Overview that the message arrived.
 
 ## Task 4
 
-**1. Change the transmission datarate (DR).
+1. Change the transmission datarate (DR).
 
 Each DR defines a set of configurations of LoRa PHY parameters (Spreading
 Factor and Bandwidth). The lower the DR is the longer the transmission range
@@ -73,9 +73,9 @@ Use `ifconfig` to change the datarate of the transmission. E.g to set the DR to
 ifconfig 3 set dr 2
 ```
 
-**2. Transmit a packet.
+2. Transmit a packet.
 ```
 txtsnd 3 7B "Hello RIOT!"
 ```
 
-**3. Check the datarate of the received packet in the TTN Dashboard (`Live data`).
+3. Check the datarate of the received packet in the TTN Dashboard (`Live data`).
