@@ -45,7 +45,7 @@ USEMODULE += fmt
 USEMODULE += netutils
 # Add also the shell, some shell commands
 USEMODULE += shell
-USEMODULE += shell_commands
+USEMODULE += shell_cmds_default
 USEMODULE += ps
 
 # include SAUL to interact with onboard sensors and actuators
