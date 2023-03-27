@@ -7,6 +7,15 @@ DEVELHELP ?= 1
 # If no BOARD is found in the environment, use this default:
 BOARD ?= b-l072z-lrwan1
 
+ifdef DBG_ID_LW
+  DEBUG_ADAPTER_ID=$(DBG_ID_COAP)
+  PORT=/dev/ttyACM0
+endif
+
+ifdef BOARD_LW
+  BOARD=$(BOARD_LW)
+endif
+
 # Path to the RIOT base directory
 RIOTBASE ?= ../RIOT
 

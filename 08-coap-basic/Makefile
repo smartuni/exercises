@@ -22,6 +22,11 @@ USEMODULE += gnrc_icmpv6_echo
 # add CoAP module
 USEMODULE += gcoap
 
+ifdef DBG_ID_COAP
+  DEBUG_ADAPTER_ID=$(DBG_ID_COAP)
+  PORT=/dev/ttyACM1
+endif
+
 # object dump allows use to print streams of bytes
 USEMODULE += od
 
