@@ -31,8 +31,8 @@ USEMODULE += event_thread
 USEMODULE += gnrc_lorawan
 
 # Uncomment/comment as needed if a board doesn't include a LoRa radio by default
-# USEMODULE += sx1272
-USEMODULE += sx1276
+USEMODULE += sx1272
+# USEMODULE += sx1276
 
 # Tell GNRC to encode LoRaWAN port in the GNRC netif header.
 # This allows us to use `gnrc_txtsnd` to send data from the shell using the
