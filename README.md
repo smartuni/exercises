@@ -1,3 +1,7 @@
+⚠️ ARCHIVED - This repository has been moved to: https://github.com/inetrg/exercises
+
+---
+
 # RIOT in the Internet of Things - Exercises
 ## Winter semester 2023
 
